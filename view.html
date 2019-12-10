@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+    <title>GV Allocation Project</title>
+    <head>
+    <meta name="description" content="Reinforcement Learning Solution for Chicago Gun Violence">
+    <meta property="og:title" content="Chicago GV Prototype">
+    <meta property="og:description" content="Reinforcement Learning Solution for Chicago Gun Violence">
+    <meta property="og:image" content="#">
+    <meta property="og:url" content="#">
+    <!-- Meta Tags  -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS -->
+        <link rel="stylesheet" href="view.css">
+    <!-- insert font here --> 
+        <!-- Header --> 
+        <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <!-- Social Media icons --> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- JS -->
+        <script src="view.js"></script>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
+    <!-- MAPS --> 
+        <script src="maps/chicago_beats.json"></script>
+        <script src="maps/chicago.json"></script>
+        <script src="maps/chicago_districts.json"></script>
+        <script src="maps/chicago_sectors.json"></script>
+        <script src="maps/optimization.json"></script>
+</head>
+    <style>
+        html {
+        scroll-behavior: smooth;
+        scroll-behavior: [ auto | smooth ];
+        }
+        body {
+            background-image: url(Images/squared_metal.png);
+            background-color: white;
+            margin: 0;
+            color: #681593;
+            font-family: Roboto;
+        }
+        body a {
+            text-decoration: none;
+        }
+
+
+        /* header */
+
+        #fader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999999;
+            pointer-events: none;
+            background: white;
+            animation-duration: 300ms;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes fade-out {
+            from {opacity: 1}
+            to {opacity: 0}
+        }
+        @keyframes fade-in {
+            from {opacity: 0}
+            to {opacity: 1}
+        }
+        #fader.fade-out {
+            opacity: 0;
+            animation-name: fade-out;
+        }
+        #fader.fade-in {
+            opacity: 1;
+            animation-name: fade-in;
+        }
+    </style>
+    <body>
+        <svg id="fader">
+            <div id="header"></div>
+            <div id="main">
+                <div id="interface">
+                    <div id="options">
+                        <div class="options-title">Map Options</div>
+<script>
+    var geo_bool = false;
+    var geo_carryon = "";
+    var input_carryon = "";
+</script>
+                        
+                        <div id="selector">
+                            <div id="geo" class="aSelector" onclick="activeSelect('geo')">
+                                <div class="aSelector-text">GEO</div>
+                            </div>
+                            <div id="var" class="aSelector" onclick="activeSelect('var'),
+                                    setGeo(geo_carryon)">
+                                <div class="aSelector-text">VAR</div>
+                            </div>
+                            <div id="data" class="aSelector" onclick="activeSelect('data')">
+                                <div class="aSelector-text">DATA</div>
+                            </div>
+                        </div>
+                        
+                        <div id="items">
+<script>
+    var hSwitch = false;
+    var sSwitch = false;
+    var cSwitch = false;
+    var oSwitch = false;
+    var eSwitch = false;
+    var gSwitch = false;
+    var switchList = [hSwitch, sSwitch, cSwitch, oSwitch, eSwitch, gSwitch];
+</script>
+                            <div id="null-item" class="anItem"></div>
+                            <div id="geo-item" class="anItem invisible">
+                                <div class="anItem-title">Please select a geographic subdivision: 
+                                    <i id="geo-info" 
+                                       class="fa fa-info-circle info" 
+                                       style="margin-left: 10px;"></i>
+                                </div>
+                                <div id="beats" 
+                                     class="anItem-option" 
+                                     onclick="geo_carryon=activeSelect('beats'),
+                                              console.log(geo_carryon),
+                                              geo_bool=flip(geo_bool),
+                                              render_map(geo_carryon)">
+                                    <div class="anItem-option-text">Beats</div>
+                                </div>
+                                <div id="districts" 
+                                     class="anItem-option" 
+                                     onclick="geo_carryon=activeSelect('districts'), 
+                                        geo_bool=flip(geo_bool),
+                                        render_map(geo_carryon)">
+                                    <div class="anItem-option-text">Districts</div>
+                                </div>
+                                <div id="neighborhoods" 
+                                     class="anItem-option" 
+                                     onclick="geo_carryon=activeSelect('neighborhoods'), 
+                                        geo_bool=flip(geo_bool),
+                                        render_map(geo_carryon)">
+                                    <div class="anItem-option-text">Neighborhoods</div>
+                                </div>
+                            </div>
+                            <div id="var-item" class="anItem invisible">
+                                <div class="anItem-title">Please set the logistical variables:<i id="geo-info" class="fa fa-info-circle info" style="margin-left: 10px;"></i></div>
+                                <div class="anItem-set">
+                                    <div class="anItem-set-text">Number of Available Outreach Workers:</div>
+                                    <input id="outreachInput" class="anItem-set-input">
+                                </div>
+                                <div class="anItem-set">
+                                    <div class="anItem-set-text">Ideal Ratio of Outreach Workers Allocated per <span id="geoset">________</span>:</div>
+                                    <input id="allocationInput" class="anItem-set-input" style="font-family: 'roboto';">
+                                </div>
+                            </div>
+                            <div id="data-item" class="anItem invisible">
+                                <div class="anItem-title">Please set the risk score factors below:<i id="geo-info" class="fa fa-info-circle info" style="margin-left: 10px;"></i></div>
+                                
+                                <div class="anItem-risk">
+                                    <div class="anItem-rLabel">Homicides</div>
+                                    <div class="switchOutline">
+                                        <div id="hSwitchOn" 
+                                             onclick="hSwitch=myswitch('h','on'),
+                                                      switchList=update_switches(switchList, hSwitch, 0),
+                                                      async_head(),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchon">On</div>
+                                        <div id="hSwitchOff" 
+                                             onclick="hSwitch=myswitch('h','off'),
+                                                      switchList=update_switches(switchList, hSwitch, 0),
+                                                      async_head(),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchoff sOn">Off</div>
+                                    </div>
+                                </div>
+
+                                <div class="anItem-risk">
+                                    <div class="anItem-rLabel">Shootings</div>
+                                    <div class="switchOutline">
+                                        <div id="sSwitchOn" 
+                                             onclick="sSwitch=myswitch('s','on'),
+                                                      switchList=update_switches(switchList, sSwitch, 1),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchon">On</div>
+                                        <div id="sSwitchOff" 
+                                             onclick="sSwitch=myswitch('s','off'),
+                                                      switchList=update_switches(switchList, sSwitch, 1),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchoff sOn">Off</div>
+                                    </div>
+                                </div>   
+                                
+                                <div class="anItem-risk">
+                                    <div class="anItem-rLabel">Census</div>
+                                    <div class="switchOutline">
+                                        <div id="cSwitchOn" 
+                                             onclick="cSwitch=myswitch('c','on'),
+                                                      switchList=update_switches(switchList, cSwitch, 2),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchon">On</div>
+                                        <div id="cSwitchOff" 
+                                             onclick="cSwitch=myswitch('c','off'),
+                                                      switchList=update_switches(switchList, cSwitch, 2),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchoff sOn">Off</div>
+                                    </div>
+                                </div> 
+
+                                <div class="anItem-risk">
+                                    <div class="anItem-rLabel">Outreach</div>
+                                    <div class="switchOutline">
+                                        <div id="oSwitchOn" 
+                                             onclick="oSwitch=myswitch('o','on'),
+                                                      switchList=update_switches(switchList, oSwitch, 3),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchon">On</div>
+                                        <div id="oSwitchOff" 
+                                             onclick="oSwitch=myswitch('o','off'),
+                                                      switchList=update_switches(switchList, oSwitch, 3),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchoff sOn">Off</div>
+                                    </div>
+                                </div> 
+
+                                <div class="anItem-risk">
+                                    <div class="anItem-rLabel">Edges</div>
+                                    <div class="switchOutline">
+                                        <div id="eSwitchOn" 
+                                             onclick="eSwitch=myswitch('e','on'),
+                                                      switchList=update_switches(switchList, eSwitch, 4),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchon">On</div>
+                                        <div id="eSwitchOff" 
+                                             onclick="eSwitch=myswitch('e','off'),
+                                                      switchList=update_switches(switchList, eSwitch, 4),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchoff sOn">Off</div>
+                                    </div>
+                                </div> 
+
+                                <div class="anItem-risk">
+                                    <div class="anItem-rLabel">Gangs</div>
+                                    <div class="switchOutline">
+                                        <div id="gSwitchOn" 
+                                             onclick="gSwitch=myswitch('g','on'),
+                                                      switchList=update_switches(switchList, gSwitch, 5),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchon">On</div>
+                                        <div id="gSwitchOff" 
+                                             onclick="gSwitch=myswitch('g','off'),
+                                                      switchList=update_switches(switchList, gSwitch, 5),
+                                                      add_layer(geo_bool, geo_carryon, switchList)" 
+                                             class="aSwitch switchoff sOn">Off</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="calculator">
+                            <div class="calculator-text" onclick="rerender_map(geo_carryon)">Calculate Risk Scores</div>
+                        </div>
+                    </div>
+                    <svg id="map">
+                    
+                    
+                    
+                    </svg>
+                </div>
+            </div>
+            <div id="footer"></div>
+        </svg>
+
+        <script>
+            function fadeInPage() {
+                if (!window.AnimationEvent) { return; }
+                var fader = document.getElementById('fader');
+                fader.classList.add('fade-out');
+            }
+        </script>
+        <script>
+        render_map('base');
+        fadeInPage();
+            
+            //fade-in, fade-out 
+            document.addEventListener('DOMContentLoaded', function() {
+                if (!window.AnimationEvent) { return; }
+                var anchors = document.getElementsByTagName('a');
+    
+            for (var idx=0; idx<anchors.length; idx+=1) {
+                if (anchors[idx].hostname !== window.location.hostname) {
+                continue;
+                }
+            anchors[idx].addEventListener('click', function(event) {
+            var localPath = '/wp-content/uploads/'
+            
+            if (anchors[idx].hostname !== window.location.hostname || anchors[idx].pathname === window.location.pathname || anchors[idx].pathname.indexOf(localPath) !== -1) {
+              //continue;
+            }
+            var fader = document.getElementById('fader'),
+                anchor = event.currentTarget;
+            
+            var listener = function() {
+                window.location = anchor.href;
+                fader.removeEventListener('animationend', listener);
+            };
+            fader.addEventListener('animationend', listener);
+            
+            event.preventDefault();
+            fader.classList.add('fade-in');
+            });
+            }
+            });
+            window.addEventListener('pageshow', function (event) {
+            if (!event.persisted) {
+            return;
+            }
+                    var fader = document.getElementById('fader');
+            fader.classList.remove('fade-in');
+            });
+    </script>
+    </body>
+</html>

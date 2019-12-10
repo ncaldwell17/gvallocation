@@ -1,0 +1,203 @@
+#header {
+    height: 75px;
+    width: 100%;
+    background-color: black;
+    margin-bottom: 50px;
+}
+
+#main {
+    height: 650px;
+    width: 1200px;
+    margin: auto;
+}
+
+#interface {
+    height: 600px;
+    width: 100%;
+    background-color: black;
+}
+
+#options {
+    height: 580px;
+    margin-top: 10px;
+    width: 300px;
+    float: left;
+    background-color: white;
+    margin-left: 50px;
+}
+
+#map {
+    height: 580px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 800px;
+    margin-left: 10px;
+}
+#map:hover {
+    cursor: pointer;
+}
+
+#footer {
+    height: 100px;
+    width: 100%;
+    background-color: black;
+}
+
+.options-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 10px;
+    font-family: Major Mono Display;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+}
+#selector {
+    height: 50px;
+    width: 100%;
+    margin-top: 10px;
+}
+.aSelector {
+    height: 50px;
+    width: 33.3%;
+    background-color: darkgrey;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    float: left;
+}
+.aSelector:hover {
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    transition: .5s;
+}
+.aSelector-text {
+    padding-top: 10px;
+}
+
+#items {
+    height: 404px;
+    background-color: gray;
+}
+.anItem {
+    height: 404px;
+    width: 100%;
+    color: white;
+}
+.anItem-title {
+    padding-top: 15px;
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 20px;
+    font-style: italic;
+}
+.anItem-option {
+    height: 75px;
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    background-color: white;
+    color: #681593;
+    border-radius: 10px;
+}
+.anItem-option:hover {
+    cursor: pointer;
+}
+.anItem-set {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+.anItem-set-input {
+    margin-top: 10px;
+    height: 18px;
+    text-align: center;
+    width: 200px;
+    font-size: 18px;
+}
+.anItem-option-text {
+    font-size: 30px;
+    text-align: center;
+    padding-top: 17px;
+}
+.anItem-risk {
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    height: 29.5px;
+}
+.anItem-rLabel {
+    width: 100px;
+    text-align: center;
+    float: left;
+    padding: 5px;
+}
+.switchOutline {
+    border: 1px solid black;
+    float: left;
+    margin-left: 10px;
+    border-radius: 20px;
+    background-color: gray;
+}
+.aSwitch {
+    width: 40px;
+    float: left;
+    padding: 4px;
+}
+.aSwitch:hover {
+    cursor: pointer;
+}
+.switchon {
+    text-align: center;
+    
+}
+.switchoff {
+    text-align: center;
+}
+.sOn {
+    background-color: #681593;
+    height: 20px;
+    border-radius: 20px;
+}
+
+.invisible {
+    display: none;
+}
+
+#calculator {
+    height: 55px;
+    background-color: white;
+    color: #681593;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    border: 5px solid gray;
+}
+.calculator-text {
+    padding-top: 10px;
+}
+#calculator:hover {
+    border: 5px solid white;
+    background-color: black;
+    color:white;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.active {
+    background-color: gray;
+    color: white;
+}
+.geo-active {
+    background-color: black;
+    color: white;
+}
+.info:hover {
+    color: black;
+    transition: .3s;
+    cursor: pointer;
+}

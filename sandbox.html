@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://d3js.org/d3.v4.min.js" charset='utf-8'></script>
+    <script src="maps/chicago_districts.json"></script>
+</head>
+<body>
+    <svg style="height: 1000;
+                width: 1000;"></svg>
+    <script>
+        var width = 800;
+        var height = 580;
+        
+         //Creates SVG
+         var svg = d3.select("svg")
+             .append("svg")
+             .attr("width", width)
+             .attr("height", height);
+        
+         //Append empty placeholder g element to the SVG
+         //g will contain the geometry elements
+         var g = svg.append("g");
+        
+         //width and height of the whole visualization
+         //set projection parameters
+         var chicago_lat = 41.878;
+         var chicago_long = 87.6298;
+         var albersProjection = d3.geoAlbers()
+             // set scale of the map
+            .scale( 85000 )
+            .rotate( [chicago_long, 0] )
+            .center( [0, chicago_lat] )
+            .translate( [width/1.5, height/2 ]);
+        
+        // d3.geoPath displays data and generates a SVG shape 
+         var geoPath = d3.geoPath()
+            .projection( albersProjection );
+        
+        g.selectAll( "path" )
+            .data( districts_json.features )
+            .enter()
+            .append( "path" )
+            .attr( "fill", "#ccc" )
+            .attr( "stroke", "#333" )
+            .attr( "d", geoPath );
+        
+         // var optimized_beats = svg.append( "g" );
+        
+//         optimized_beeats.selectAll( "path" )
+//            .data(optimizer.geometries)
+//            .enter()
+//            .append("path")
+//            .attr( "fill", "#900" )
+//            .attr( "stroke", "#999" )
+//            .attr( "d", geoPath );
+        
+    </script>
+</body>
+</html>

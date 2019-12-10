@@ -1,0 +1,1 @@
+# initial configurations for app
