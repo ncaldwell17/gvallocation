@@ -1,12 +1,10 @@
-import geopandas as gpd
-import numpy as np
-import pandas as pd
-import os
+from resources.beat_assembly import Beat_Assembly
 
-from beat_assembly import Beat_Assembly
 
 class Beat_Data():
-    def write_percentiles(self, domain, dataframe):
+
+    @staticmethod
+    def write_percentiles(domain, dataframe):
         top25 = dataframe['count_{0}'.format(domain)].quantile(.75)
         top25 = dataframe['count_{0}'.format(domain)] > top25
         top25 = dataframe[top25]

@@ -117,7 +117,7 @@ function add_layer(base_bool, carryon, los_switches) {
         var gangs = los_switches[5].toString();
 
         // url construction
-        var origin = 'http://localhost:5000/';
+        var origin = 'http://localhost:5000/api';
 
         var url_1 = '?geo='+gSetting+'&outreach='+outreach+'&allocation='+allocation;
         var url_2 = '&h='+homicides+'&s='+shootings+'&c='+census+'&o='+outreach_presence;

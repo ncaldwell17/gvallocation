@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
+<head>
     <title>GV Allocation Project</title>
-    <head>
     <meta name="description" content="Reinforcement Learning Solution for Chicago Gun Violence">
     <meta property="og:title" content="Chicago GV Prototype">
     <meta property="og:description" content="Reinforcement Learning Solution for Chicago Gun Violence">
@@ -11,7 +11,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- CSS -->
-        <link rel="stylesheet" href="view.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/view.css') }}">
     <!-- insert font here --> 
         <!-- Header --> 
         <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap" rel="stylesheet">
@@ -19,15 +19,15 @@
     <!-- Social Media icons --> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- JS -->
-        <script src="view.js"></script>
+        <script src="{{ url_for('static', filename='code/view.js') }}"></script>
         <script src="https://d3js.org/d3.v4.js"></script>
         <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script>
-    <!-- MAPS --> 
-        <script src="maps/chicago_beats.json"></script>
-        <script src="maps/chicago.json"></script>
-        <script src="maps/chicago_districts.json"></script>
-        <script src="maps/chicago_sectors.json"></script>
-        <script src="maps/optimization.json"></script>
+    <!-- MAPS -->
+        <script src="{{ url_for('static', filename='maps/chicago_beats.json') }}"></script>
+        <script src="{{ url_for('static', filename='maps/chicago.json') }}"></script>
+        <script src="{{ url_for('static', filename='maps/chicago_districts.json') }}"></script>
+        <script src="{{ url_for('static', filename='maps/chicago_sectors.json') }}"></script>
+        <script src="{{ url_for('static', filename='maps/optimization.json') }}"></script>
 </head>
     <style>
         html {
@@ -35,7 +35,7 @@
         scroll-behavior: [ auto | smooth ];
         }
         body {
-            background-image: url(Images/squared_metal.png);
+            background-image: url("../static/styles/images/squared_metal.png");
             background-color: white;
             margin: 0;
             color: #681593;

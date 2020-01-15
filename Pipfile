@@ -12,6 +12,10 @@ pandas = "*"
 flask-cors = "*"
 geopandas = "*"
 numpy = "*"
+flask-wtf = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"

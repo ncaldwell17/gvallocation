@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <title>Rolodex</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- For live site & online testing --> 
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+          crossorigin="anonymous">
+    
+    <!-- For offline testing & writing 
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="jquery-[INSERT VERSION HERE]"></script>
+    --> 
+    
+    <!-- For Flask testing -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
+
+    
+    <!-- For non-Flask testing
+    <link rel="stylesheet" type="text/css" href="main.css">
+    -->
+
+    
+</head>
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<body>
+
+<nav class="navbar navbar-expand-md">
+  <a class="navbar-brand" href="#">Rolodex</a>
+  <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="main-navigation">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    
+<header class="page-header header container-fluid">
+    <div class="overlay">
+        <div class="entrypoint">
+            <h1>Welcome to Rolodex!</h1>
+             <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </p>
+        <p>{{ form.remember_me() }}{{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+        </div>
+    </div>
+</header>
+
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+            <h6 class="text-uppercase font-weight-bold">Additional Information</h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum quam odio, quis placerat ante luctus eu. Sed aliquet dolor id sapien rutrum, id vulputate quam iaculis.</p>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <h6 class="text-uppercase font-weight-bold">Contact</h6>
+            <p>2625 N. Clark Street, Chicago, Illinois
+            <br/><br>ncaldwellgatsos.com
+            <br/>+1-336-830-0509</p>
+        </div>
+    </div>
+    <div class="footer-copyright text-center">© 2020 Copyright: ncaldwellgatsos.com</div>
+    </div>
+</footer>
+
+
+<!-- For non-Flask testing
+<script src="main.js"></script>
+-->
+
+<!-- For Flask testing -->
+<script src="{{ url_for('static', filename='code/login.js') }}"></script>
+
+</body>
+
+</html>

@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 import os
 
-from beat_data import Beat_Data
+from resources.beat_data import Beat_Data
+
 
 class Assembly_Data(object):
     def assign_score(self, boolean_score):
