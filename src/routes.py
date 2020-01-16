@@ -1,6 +1,6 @@
 from flask import jsonify, request, render_template
-from app import app
-from app.forms import LoginForm
+from src import app
+from src.forms import LoginForm
 from resources.assembly import Assembly_Data
 
 
