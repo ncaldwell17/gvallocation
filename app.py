@@ -1,4 +1,4 @@
-from app import app, db
+from app.__init__ import app, db
 from app.models import User
 
 
