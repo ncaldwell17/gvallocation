@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="346ac4c7-dede-44ef-8105-7cffd76e79aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assembly.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beat_assembly.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/beat_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes.py" afterDir="false" />
-    </list>
+    <list default="true" id="346ac4c7-dede-44ef-8105-7cffd76e79aa" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +12,7 @@
     <session id="383930124">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.opened" value="2" />
         </counts>
@@ -92,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            <state relative-caret-position="150">
+              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -162,11 +157,6 @@
               <item name="gvallocation" type="b2602c69:ProjectViewProjectNode" />
               <item name="gvallocation" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="gvallocation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="gvallocation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -182,6 +172,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/app/static/styles/images" />
       <recent name="$PROJECT_DIR$/app/static" />
       <recent name="$PROJECT_DIR$/app/static/code" />
@@ -215,7 +206,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="90" y="22" width="1034" height="1028" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.311412" />
@@ -388,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        <state relative-caret-position="150">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
