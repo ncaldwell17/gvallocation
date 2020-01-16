@@ -1,9 +1,4 @@
-import geopandas as gpd
-import numpy as np
-import pandas as pd
-import os
-
-from resources.beat_data import Beat_Data
+from src.beat_data import Beat_Data
 
 
 class Assembly_Data(object):

@@ -1,7 +1,7 @@
 from flask import jsonify, request, render_template
 from src import app
 from src.forms import LoginForm
-from resources.assembly import Assembly_Data
+from src.assembly import Assembly_Data
 
 
 # Helper Functions

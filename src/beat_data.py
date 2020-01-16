@@ -1,4 +1,4 @@
-from resources.beat_assembly import Beat_Assembly
+from src.beat_assembly import Beat_Assembly
 
 
 class Beat_Data():
